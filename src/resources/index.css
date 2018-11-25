@@ -1,56 +1,58 @@
 @font-face {
-    font-family: 'amatic_scregular';
-    src: url('./fonts/amaticsc-regular-webfont.woff2') format('woff2'),
-    url('./fonts/amaticsc-regular-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'amatic_scbold';
-    src: url('./fonts/amaticsc-bold-webfont.woff2') format('woff2'),
-    url('./fonts/amaticsc-bold-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'amatic_scregular';
+  src: url('./fonts/amaticsc-regular-webfont.woff2') format('woff2'),
+  url('./fonts/amaticsc-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'muliregular';
-    src: url('./fonts/muli-regular-webfont.woff2') format('woff2'),
-    url('./fonts/muli-regular-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'amatic_scbold';
+  src: url('./fonts/amaticsc-bold-webfont.woff2') format('woff2'),
+  url('./fonts/amaticsc-bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
+
 @font-face {
-    font-family: 'mulibold';
-    src: url('./fonts/muli-bold-webfont.woff2') format('woff2'),
-    url('./fonts/muli-bold-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'muliregular';
+  src: url('./fonts/muli-regular-webfont.woff2') format('woff2'),
+  url('./fonts/muli-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'mulibold';
+  src: url('./fonts/muli-bold-webfont.woff2') format('woff2'),
+  url('./fonts/muli-bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
 }
 
 ul, ol {
-    list-style: none;
+  list-style: none;
 }
 
 body {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
-    height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  height: 100vh;
 }
 
 .pageRoot {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
 }
