@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { css } from 'emotion';
+import { Parallax, Background } from 'react-parallax';
 import { colours } from '../resources/colours';
 import { fonts } from '../resources/fonts';
 import Gallery from './Gallery';
@@ -17,14 +18,44 @@ class App extends Component {
                     <li><a href="/">About</a></li>
                     <li><a href="/">Shop</a></li>
                     <li><a href="/">Contact</a></li>
-                  </ul>
+                  </ul>2.jpg
                 </div>
               </div>
               <div className={style.promotionContainer}>
-                <div className={style.promotionContainer__inner}>
+                <Parallax
+                    blur={{ min: -8, max: 15 }}
+                    bgImage={require('./bg.jpg')}
+                    strength={-200}
+                    contentClassName={style.promotionContainer__inner}
+                    renderLayer={percentage => (
+                        <div
+                            className={style.promotionContainer__text}
+                          style={{
+                            transform: `translate(-50%, -${50 + percentage}%)`,
+                          }}
+                        >
+                          <a href="/">[logo img]</a>
+                          <h2>Handwoven shawls and scarves</h2>
+                        </div>
+                    )}
+                >
+                </Parallax>
+                {/*<Parallax
+                    blur={{ min: -15, max: 15 }}
+                    strength={300}
+                >
+                  <div className={style.promotionContainer__inner}>
+                    <a href="/">[logo img]</a>
+                    <h2>Handwoven shawls and scarves</h2>
+                  </div>
+                  <Background className={style.promotionContainer__img}>
+                    <img src="/imgs/2.jpg" />
+                  </Background>
+                </Parallax>*/}
+                {/*<div className={style.promotionContainer__inner}>
                   <a href="/">[logo img]</a>
                   <h2>Handwoven shawls and scarves</h2>
-                </div>
+                </div>*/}
                 {/*<div className={style.promotionContainer__text}>
                   <p>Silk, merino and alpaca wool fashion accessories made by hand. Each piece is unique, handwoven in Budapest.</p>
                   <a href="/">See Collection</a>
@@ -54,15 +85,15 @@ const innerContainer = css`
   `;
 const styleButton = {
   primary: css`
-    color: ${colours.c3};
-    border: 1px solid ${colours.c3};
+    color: ${colours.c9};
+    border: 1px solid ${colours.c9};
     padding: 10px 15px;
     font-size: 16px;
     border-radius: 3px;
     
     :hover {
       color: ${colours.c1};
-      background: ${colours.c3};
+      background: ${colours.c9};
     }
   `
 };
@@ -125,7 +156,7 @@ const style = {
       font-size: 28px;
       
       :hover {
-        color: ${colours.c3};
+        color: ${colours.c9};
       }
     }
   `,
@@ -139,17 +170,27 @@ const style = {
     align-items: center;
     justify-content: center;
     
-    background-image: url(/imgs/7.jpg);
-    background-position: 50% 50%;
+    /*background-image: url(/imgs/2.jpg);
+    background-position: 50% 40%;
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-attachment: fixed;*/
     
     height: 650px;
-    background-size: 100%;
+    /*background-size: auto;*/
+  `,
+  promotionContainer__text: css`
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     
     a {
-      color: ${colours.c3};
-      border: 2px solid ${colours.c3};
+      color: ${colours.c1};
+      border: 2px solid ${colours.c1};
       display: block;
       width: 100px;
       height: 100px;

@@ -22,6 +22,7 @@ const style = {
     margin-top: 50px;
   `,
   galleryLink: css`
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -31,19 +32,39 @@ const style = {
     background-repeat: no-repeat;
     background-size: 100%;
     border-radius: 3px;
-    transition: opacity .4s ease;
+    overflow: hidden;
+    
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      background: ${colours.c3};
+      height: 0;
+      width: 100%;
+      opacity: 0.3;
+      transition: height .3s ease;
+    }
     
     span {
-      display: none;
       color: ${colours.c1};
       font-family: ${fonts.f2};
       font-size: 30px;
+      position: absolute;
+      bottom: -100%;
+      left: 50%;
+      z-index: 1;
+      transform: translateY(50%);
+      transition: bottom .3s ease;
     }
     
     &:hover {
-      opacity: 0.7;
+      &:before {
+        height: 100%;
+      }
       span {
-        display: block;
+        bottom: 50%;
       }
     }
   `,

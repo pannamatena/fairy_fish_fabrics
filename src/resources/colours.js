@@ -7,4 +7,6 @@ export const colours = {
     c6: '#FCE70D', // yellow
     c7: '#FF784F', // salmon
     c8: '#E0E0E0', // gray
+
+    c9: '#BA3567', // pink
 };
