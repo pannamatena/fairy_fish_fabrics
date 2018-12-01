@@ -3,6 +3,7 @@ import { css } from 'emotion';
 import { Parallax } from 'react-parallax';
 import { colours } from '../resources/colours';
 import { fonts } from '../resources/fonts';
+import { breakPoints } from '../resources/breakPoints';
 import Gallery from './Gallery';
 import Header from './Header';
 import Footer from './Footer';
@@ -11,13 +12,10 @@ class App extends Component {
   constructor() {
     super();
 
-    this.sidePadding = 20;
-    this.defaultHeaderHeight = 80;
-
     this.state = {
       isScrolled: false,
       isBottomReached: false,
-      windowInnerHeight: (window.innerHeight - this.sidePadding - this.defaultHeaderHeight),
+      windowInnerHeight: window.innerHeight,
     };
 
     this.trackScroll = this.trackScroll.bind(this);
@@ -44,7 +42,7 @@ class App extends Component {
 
   setWindowInnerHeight() {
     this.setState({
-      windowInnerHeight: (window.innerHeight - this.sidePadding - this.defaultHeaderHeight),
+      windowInnerHeight: window.innerHeight,
     });
   }
 
@@ -74,7 +72,13 @@ class App extends Component {
 
   render() {
     const innerContainer = css`
-      margin: 0 20px;
+      margin: 0 10px;
+      @media ${breakPoints.tabletPortrait} {
+        margin: 0 15px;
+      }
+      @media ${breakPoints.desktopSmall} {
+        margin: 0 20px;
+      }
     `;
     /*const styleButton = {
       primary: css`
@@ -97,7 +101,7 @@ class App extends Component {
         font-family: ${fonts.f3};
         color: ${colours.c2};
         
-        font-size: 14px;
+        font-size: 1em;
         
         a {
           text-decoration: none;
@@ -105,21 +109,34 @@ class App extends Component {
       `,
       pageContainer: css`
         height: 100%;
-        padding-top: 80px;
+        
+        padding-top: 54px;
         padding-bottom: 220px;
+        @media ${breakPoints.tabletPortrait} {
+          padding-top: 70px;
+          padding-bottom: 220px;
+        }
+        @media ${breakPoints.desktopSmall} {
+          padding-top: 80px;
+          padding-bottom: 220px;
         }
       `,
       promotionContainer: css`
       `,
       promotionContainer__inner: css`
         width: 100%;
-        
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         
-        height: ${this.state.windowInnerHeight}px;
+        height: ${this.state.windowInnerHeight - 10 - 54}px;
+        @media ${breakPoints.tabletPortrait} {
+          height: ${this.state.windowInnerHeight - 15 - 70}px;
+        }
+        @media ${breakPoints.desktopSmall} {
+          height: ${this.state.windowInnerHeight - 20 - 80}px;
+        }
       `,
       promotionContainer__text: css`
         position: absolute;
@@ -140,8 +157,19 @@ class App extends Component {
         }
         
         h2 {
-          font-size: 40px;
           color: ${colours.c1};
+          text-align: center;
+          
+          font-size: 1.5em;
+          @media ${breakPoints.tabletPortrait} {
+            font-size: 1.8em;
+          }
+          @media ${breakPoints.desktopSmall} {
+            font-size: 2em;
+          }
+          @media ${breakPoints.desktopLarge} {
+            font-size: 2.8em;
+          }
         }
       `,
     };

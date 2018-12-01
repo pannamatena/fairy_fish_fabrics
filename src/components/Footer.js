@@ -54,6 +54,7 @@ const Footer = (props) => {
     contact: css`
       display: ${props.isBottomReached ? 'block' : 'none'};
       margin-bottom: 20px;
+      text-align: center;
       
       span {
         display: block;
@@ -62,6 +63,7 @@ const Footer = (props) => {
     credentials: css`
       color: ${colours.c8};
       display: ${props.isBottomReached ? 'block' : 'none'};
+      text-align: center;
       
       a {
         color: ${colours.c8};
