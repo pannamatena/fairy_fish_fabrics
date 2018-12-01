@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { css } from 'emotion';
-import { Parallax, Background } from 'react-parallax';
+import { Parallax } from 'react-parallax';
 import { animateScroll, scroller } from 'react-scroll';
 import { colours } from '../resources/colours';
 import { fonts } from '../resources/fonts';
-import { facebook, instagram, pinterest } from '../resources/img/icons';
 import Gallery from './Gallery';
+import Header from './Header';
+import Footer from './Footer';
 
 class App extends Component {
   constructor() {
@@ -50,7 +51,7 @@ class App extends Component {
 
   displayFooter() {
     if ((window.scrollY > 50) && !this.state.isBottomReached) {
-      return '60px';
+      return '70px';
     }
     if (this.state.isBottomReached) {
       return '200px';
@@ -59,7 +60,7 @@ class App extends Component {
   }
 
   isBottomReached(el) {
-    return el.getBoundingClientRect().bottom <= window.innerHeight;
+    return el.getBoundingClientRect().bottom <= (window.innerHeight + 80);
   }
 
   trackScroll() {
@@ -73,19 +74,10 @@ class App extends Component {
   };
 
   render() {
-    const outerContainer = css`
-      width: 100%;
-    `;
     const innerContainer = css`
-      width: 85%;
-      margin: auto;
-      
-      max-width: 1400px;
-    `;
-    const innerContainer_2 = css`
       margin: 0 20px;
     `;
-    const styleButton = {
+    /*const styleButton = {
       primary: css`
         color: ${colours.c9};
         border: 1px solid ${colours.c9};
@@ -98,7 +90,7 @@ class App extends Component {
           background: ${colours.c9};
         }
       `
-    };
+    };*/
     const style = {
       app: css`
         flex: 1;
@@ -115,56 +107,7 @@ class App extends Component {
       pageContainer: css`
         height: 100%;
         padding-top: 80px;
-      `,
-      headerContainer: css`
-        background: ${colours.c1};
-        border-bottom: ${this.state.isScrolled ? `1px dashed ${colours.c8}` : 'none'};
-        z-index: 99;
-        position: fixed;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        transition: all 0.2s ease;
-        
-        padding-top: ${this.state.isScrolled ? '10px' : '20px'};
-        padding-bottom: ${this.state.isScrolled ? '10px' : '20px'};
-      `,
-      headerContainer__inner: css`
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: flex-start;
-        
-        margin: 0 20px;
-      `,
-      logo: css`
-        transition: all 0.2s ease;
-        font-family: ${fonts.f2};
-        color: ${colours.c2};
-        
-        font-size: 28px;
-      `,
-      mainMenu: css`
-        flex: 1;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: flex-end;
-        
-        li {
-          margin-left: 3%;
-        }
-        
-        a {
-          transition: all 0.2s ease;
-          font-family: ${fonts.f1};
-          color: ${colours.c2};
-          
-          font-size: 28px;
-          
-          :hover {
-            color: ${colours.c3};
-          }
+        padding-bottom: 220px;
         }
       `,
       promotionContainer: css`
@@ -202,111 +145,39 @@ class App extends Component {
           color: ${colours.c1};
         }
       `,
-      footerContainer: css`
-        width: 100%;
-        background: ${colours.c1};
-        z-index: 99;
-        position: fixed;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        transition: all 0.2s ease;
-        border-top: 1px dashed ${colours.c8};
-        height: ${this.displayFooter()};
-      `,
-      footerContainer__inner: css`
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        
-        margin: 0 20px;
-        padding: 20px 0;
-      `,
-      socialLinks: css`
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: flex-start;
-        
-        li {
-          margin: 0 10px;
-        }
-        
-        svg {
-          width: 30px;
-          height: 30px;
-          fill: ${colours.c2};
-          transition: all 0.2s ease;
-        }
-        
-        a:hover {
-          svg {
-            fill: ${colours.c3};
-          }
-        }
-      `,
-      credentials: css`
-        color: ${colours.c8};
-        
-        a {
-          color: ${colours.c8};
-        }
-        
-        a:hover {
-          color: ${colours.c4};
-        }
-      `,
     };
 
     return (
       <div className={style.app}>
-          <div id="page_container" className={style.pageContainer}>
-              <div className={`${style.headerContainer} ${outerContainer}`}>
-                <div className={`${style.headerContainer__inner}`}>
-                  <a className={style.logo} href="/">FairyFish Fabrics</a>
-                  <ul className={style.mainMenu}>
-                    <li><a href="/">Portfolio</a></li>
-                    <li><a href="/">About</a></li>
-                    <li><a href="/">Shop</a></li>
-                    <li><a href="/">Contact</a></li>
-                  </ul>
-                </div>
-              </div>
-              <div className={`${style.promotionContainer} ${innerContainer_2}`}>
-                <Parallax
-                    blur={{ min: -8, max: 15 }}
-                    bgImage={require('../resources/img/bg.jpg')}
-                    strength={-200}
-                    contentClassName={style.promotionContainer__inner}
-                    renderLayer={percentage => (
-                        <div
-                            className={style.promotionContainer__text}
-                        >
-                          <a href="/">[logo img]</a>
-                          <h2>Handwoven shawls and scarves</h2>
-                        </div>
-                    )}
-                >
-                </Parallax>
-              </div>
-              <div className="galleryContainer">
-                <div className={innerContainer}>
-                  <Gallery />
-                </div>
-              </div>
-              <div className="socialContainer">social</div>
-              <div className={style.footerContainer}>
-                <div className={style.footerContainer__inner}>
-                  <ul className={style.socialLinks}>
-                    <li><a href="/">{facebook()}</a></li>
-                    <li><a href="/">{instagram()}</a></li>
-                    <li><a href="/">{pinterest()}</a></li>
-                  </ul>
-                  <div className={style.credentials}>Icons made by <a href="https://www.flaticon.com/authors/graphicsbay" title="GraphicsBay">GraphicsBay</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
-                </div>
-              </div>
+        <div id="page_container" className={style.pageContainer}>
+          <Header
+              isScrolled={this.state.isScrolled}
+          />
+          <div className={`${style.promotionContainer} ${innerContainer}`}>
+            <Parallax
+                blur={{ min: -8, max: 15 }}
+                bgImage={require('../resources/img/bg.jpg')}
+                strength={-200}
+                contentClassName={style.promotionContainer__inner}
+                renderLayer={() => (
+                    <div
+                        className={style.promotionContainer__text}
+                    >
+                      <a href="/">[logo img]</a>
+                      <h2>Handwoven shawls and scarves</h2>
+                    </div>
+                )}
+            >
+            </Parallax>
           </div>
+          <div className={innerContainer}>
+            <Gallery />
+          </div>
+          <Footer
+              displayFooter={this.displayFooter()}
+              isBottomReached={this.state.isBottomReached}
+          />
+        </div>
       </div>
     );
   }
