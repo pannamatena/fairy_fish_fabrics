@@ -49,6 +49,10 @@ body {
   height: 100vh;
 }
 
+a {
+  cursor: pointer;
+}
+
 .pageRoot {
   flex: 1;
   display: flex;

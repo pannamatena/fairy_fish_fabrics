@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { css } from 'emotion';
 import { Parallax } from 'react-parallax';
-import { animateScroll, scroller } from 'react-scroll';
 import { colours } from '../resources/colours';
 import { fonts } from '../resources/fonts';
 import Gallery from './Gallery';
@@ -170,7 +169,10 @@ class App extends Component {
             >
             </Parallax>
           </div>
-          <div className={innerContainer}>
+          <div
+              name="_portfolio"
+              className={innerContainer}
+          >
             <Gallery />
           </div>
           <Footer
