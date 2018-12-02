@@ -4,6 +4,7 @@ import { Parallax } from 'react-parallax';
 import { colours } from '../resources/colours';
 import { fonts } from '../resources/fonts';
 import { breakPoints } from '../resources/breakPoints';
+import { galleryImages, gallerDescriptions } from '../resources/img/galleryImages';
 import Gallery from './Gallery';
 import Header from './Header';
 import Footer from './Footer';
@@ -127,8 +128,6 @@ class App extends Component {
           padding-bottom: 220px;
         }
       `,
-      promotionContainer: css`
-      `,
       promotionContainer__inner: css`
         width: 100%;
         display: flex;
@@ -186,10 +185,10 @@ class App extends Component {
           <Header
               isScrolled={this.state.isScrolled}
           />
-          <div className={`${style.promotionContainer} ${innerContainer}`}>
+          <div className={`promotionContainer ${innerContainer}`}>
             <Parallax
                 blur={{ min: -8, max: 15 }}
-                bgImage={require('../resources/img/bg.jpg')}
+                bgImage={require('../resources/img/bg_2.jpg')}
                 strength={-200}
                 contentClassName={style.promotionContainer__inner}
                 renderLayer={() => (
@@ -207,7 +206,11 @@ class App extends Component {
               name="_portfolio"
               className={innerContainer}
           >
-            <Gallery />
+            <Gallery
+                galleries={galleryImages}
+                descriptions={gallerDescriptions}
+                size={this.state.windowInnerHeight}
+            />
           </div>
           <Footer
               displayFooter={this.displayFooter()}

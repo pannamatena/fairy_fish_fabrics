@@ -21,7 +21,7 @@ class Header extends Component {
     return () => {
       const offset = -this.refs.headerContainer.clientHeight;
       scroller.scrollTo(elementName, {
-        duration: 400,
+        duration: 500,
         smooth: true,
         offset
       });
@@ -29,11 +29,11 @@ class Header extends Component {
   }
 
   scrollToTop () {
-    animateScroll.scrollToTop({ duration: 400 });
+    animateScroll.scrollToTop({ duration: 500 });
   }
 
   scrollToBottom () {
-    animateScroll.scrollToBottom({ duration: 400 });
+    animateScroll.scrollToBottom({ duration: 500 });
   }
 
   openMobileMenu() {
