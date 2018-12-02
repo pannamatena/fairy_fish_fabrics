@@ -1,9 +1,21 @@
 import React from 'react';
 import { css } from 'emotion';
 import { colours } from '../resources/colours';
+import { breakPoints } from '../resources/breakPoints';
 import {facebook, instagram, pinterest} from "../resources/img/icons";
 
 const Footer = (props) => {
+  const footerHeight = () => {
+    switch(props.displayFooter) {
+      case 'SHOW':
+        return 'footerContainer--show';
+      case 'SHOW_BOTTOM':
+        return 'footerContainer--showBottom';
+      default:
+        return 'footerContainer--hidden';
+    }
+  };
+
   const style = {
     footerContainer: css`
       width: 100%;
@@ -14,8 +26,25 @@ const Footer = (props) => {
       left: 50%;
       transform: translateX(-50%);
       transition: all 0.2s ease;
-      border-top: 1px dashed ${colours.c8};
-      height: ${props.displayFooter};
+      border-top: 1px dashed ${colours.c9};
+    `,
+    'footerContainer--show': css`
+      height: 55px;
+      @media ${breakPoints.tabletPortrait} {
+        height: 65px;
+      }
+      @media ${breakPoints.desktopSmall} {
+        height: 70px;
+      }
+    `,
+    'footerContainer--showBottom': css`
+      height: 160px;
+      @media ${breakPoints.desktopSmall} {
+        height: 200px;
+      }
+    `,
+    'footerContainer--hidden': css`
+      height: 0;
     `,
     footerContainer__inner: css`
       height: 100%;
@@ -24,8 +53,16 @@ const Footer = (props) => {
       align-items: center;
       justify-content: space-between;
       
-      margin: 0 20px;
-      padding: 20px 0;
+      margin: 0 10px;
+      padding: 10px 0;
+      @media ${breakPoints.tabletPortrait} {
+        margin: 0 15px;
+        padding: 15px 0;
+      }
+      @media ${breakPoints.desktopSmall} {
+        margin: 0 20px;
+        padding: 20px 0;
+      }
     `,
     socialLinks: css`
       flex: 1;
@@ -53,8 +90,15 @@ const Footer = (props) => {
     `,
     contact: css`
       display: ${props.isBottomReached ? 'block' : 'none'};
-      margin-bottom: 20px;
       text-align: center;
+      
+      margin: 10px 0;
+      @media ${breakPoints.tabletPortrait} {
+        margin: 15px 0;
+      }
+      @media ${breakPoints.desktopSmall} {
+        margin: 20px 0;
+      }
       
       span {
         display: block;
@@ -75,9 +119,9 @@ const Footer = (props) => {
     `,
   };
 
-
+  console.log(footerHeight());
   return (
-      <div className={style.footerContainer}>
+      <div className={`${style.footerContainer} ${style[footerHeight()]}`}>
         <div className={style.footerContainer__inner}>
           <ul className={style.socialLinks}>
             <li><a href="/">{facebook()}</a></li>
@@ -85,7 +129,7 @@ const Footer = (props) => {
             <li><a href="/">{pinterest()}</a></li>
           </ul>
           <div className={style.contact}>
-            <span>email@email.com</span>
+            <span><a href="mailto:email@email.com">email@email.com</a></span>
             <span>+36 12 1234 123</span>
           </div>
           <div className={style.credentials}>Icons made by <a href="https://www.flaticon.com/authors/graphicsbay" title="GraphicsBay" target="_blank" rel="noopener noreferrer">GraphicsBay</a> from <a href="https://www.flaticon.com/" title="Flaticon" target="_blank" rel="noopener noreferrer">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank" rel="noopener noreferrer">CC 3.0 BY</a></div>

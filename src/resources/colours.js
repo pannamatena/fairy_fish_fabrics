@@ -1,5 +1,5 @@
 export const colours = {
-    c1: '#fff',
+    c1: '#fdfdfb',
     c2: '#332E1D', // text
     c3: '#5AC7AA', // turquoise
     c4: '#9ADCB9', // mint

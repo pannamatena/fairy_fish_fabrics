@@ -47,13 +47,13 @@ class App extends Component {
   }
 
   displayFooter() {
-    if ((window.scrollY > 50) && !this.state.isBottomReached) {
-      return '70px';
+    if ((window.scrollY > 20) && !this.state.isBottomReached) {
+      return 'SHOW';
     }
     if (this.state.isBottomReached) {
-      return '200px';
+      return 'SHOW_BOTTOM';
     }
-    return '0';
+    return 'HIDDEN';
   }
 
   isBottomReached(el) {
@@ -104,7 +104,13 @@ class App extends Component {
         font-size: 1em;
         
         a {
+          color: ${colours.c2};
           text-decoration: none;
+          transition: color 0.2s ease;
+          
+          :hover {
+            color: ${colours.c9};
+          }
         }
       `,
       pageContainer: css`
@@ -165,7 +171,7 @@ class App extends Component {
             font-size: 1.8em;
           }
           @media ${breakPoints.desktopSmall} {
-            font-size: 2em;
+            font-size: 2.3em;
           }
           @media ${breakPoints.desktopLarge} {
             font-size: 2.8em;
