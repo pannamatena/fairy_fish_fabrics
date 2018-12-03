@@ -4,7 +4,7 @@ import { Parallax } from 'react-parallax';
 import { colours } from '../resources/colours';
 import { fonts } from '../resources/fonts';
 import { breakPoints } from '../resources/breakPoints';
-import { galleryImages, gallerDescriptions } from '../resources/img/galleryImages';
+import { galleryImages, galleryDescriptions } from '../resources/img/galleryImages';
 import Gallery from './Gallery';
 import Header from './Header';
 import Footer from './Footer';
@@ -208,7 +208,7 @@ class App extends Component {
           >
             <Gallery
                 galleries={galleryImages}
-                descriptions={gallerDescriptions}
+                descriptions={galleryDescriptions}
                 size={this.state.windowInnerHeight}
             />
           </div>

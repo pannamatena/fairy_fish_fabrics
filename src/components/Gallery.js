@@ -19,30 +19,50 @@ const Gallery = (props) => {
     `,
     galleryContainer: css`
       position: relative;
+    `,
+    galleryContainer__textContainer: css`
+      z-index: 1;
+      position: absolute;
+      display: inline-block;
+      max-width: 40%;
       
-      p {
-        position: absolute;
-        left: 20px;
-        display: inline-block;
-        max-width: 40%;
-        
-        font-size: 1.5em;
-        top: 10px;
-        @media ${breakPoints.tabletPortrait} {
-          font-size: 1.5em;
-          top: 15px;
-        }
-        @media ${breakPoints.desktopSmall} {
-          font-size: 1.5em;
-          top: 20px;
-        }
-        @media ${breakPoints.desktopLarge} {
-          font-size: 1.5em;
-        }
+      top: 10px;
+      @media ${breakPoints.tabletPortrait} {
+        top: 15px;
       }
+      @media ${breakPoints.desktopSmall} {
+        top: 20px;
+      }
+    `,
+    'galleryContainer__textContainer--left': css`
+      left: 50%;
+      transform: translateX(-100%);
+    `,
+    'galleryContainer__textContainer--right': css`
+      right: 50%;
+      transform: translateX(100%);
     `,
     galleryContainer__inner: css`
       visibility: hidden;
+    `,
+    galleryContainer__headline: css`
+      font-style: italic;
+      
+      font-size: 1.5em;
+      margin-bottom: 10px;
+      @media ${breakPoints.tabletPortrait} {
+        font-size: 1.5em;
+        margin-bottom: 15px;
+      }
+      @media ${breakPoints.desktopSmall} {
+        font-size: 2em;
+        margin-bottom: 20px;
+      }
+      @media ${breakPoints.desktopLarge} {
+        font-size: 2em;
+      }
+    `,
+    galleryContainer__subText: css`
     `,
     galleryContent: css`
       visibility: hidden;
@@ -121,24 +141,30 @@ const Gallery = (props) => {
       </button>
     ))
   );
-  /*style={{background: colours[`c${index + 2}`]}}*/
-  const getGalleries = () => (
-    Object.keys(props.galleries).map((galleryName, index) => (
-        <div className={style.galleryContainer}>
-          <p>"{props.descriptions[galleryName]}"</p>
-          <Parallax
-              strength={100}
-              contentClassName={style.galleryContainer__inner}
 
-              renderLayer={percentage => getImages(props.galleries[galleryName], percentage)}
-          >
-            <Background></Background>
-            <div className={style.galleryContent}></div>
-          </Parallax>
-        </div>
-      )
+  const getGalleries = () => {
+    const gallerContainerOrientationClass = galleryName => `galleryContainer__textContainer--${props.descriptions[galleryName].orientation}`;
+    return (
+        Object.keys(props.galleries).map((galleryName, index) => (
+                <div className={style.galleryContainer}>
+                  <div className={`${style.galleryContainer__textContainer} ${style[gallerContainerOrientationClass(galleryName)]}`}>
+                    <p className={style.galleryContainer__headline}>"{props.descriptions[galleryName].headline}"</p>
+                    {props.descriptions[galleryName].subText ? (<p className={style.galleryContainer__subText}>{props.descriptions[galleryName].subText}</p>) : null}
+                  </div>
+                  <Parallax
+                      strength={100}
+                      contentClassName={style.galleryContainer__inner}
+                      style={{background: colours[`c${index + 3}`]}}
+                      renderLayer={percentage => getImages(props.galleries[galleryName], percentage)}
+                  >
+                    <Background></Background>
+                    <div className={style.galleryContent}></div>
+                  </Parallax>
+                </div>
+            )
+        )
     )
-  );
+  };
 
   return (
     <div className={style.gallery}>

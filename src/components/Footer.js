@@ -133,6 +133,7 @@ const Footer = (props) => {
             <span>+36 12 1234 123</span>
           </div>
           <div className={style.credentials}>Icons made by <a href="https://www.flaticon.com/authors/graphicsbay" title="GraphicsBay" target="_blank" rel="noopener noreferrer">GraphicsBay</a> from <a href="https://www.flaticon.com/" title="Flaticon" target="_blank" rel="noopener noreferrer">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank" rel="noopener noreferrer">CC 3.0 BY</a></div>
+          <div className={style.credentials}>Photos by Andi Kondas Photo - Portrait for You</div>
           <div className={style.credentials}>Design & Development by <a href="http://pannadraws.com" title="PannaDraws" target="_blank" rel="noopener noreferrer">PannaDraws</a></div>
         </div>
       </div>
