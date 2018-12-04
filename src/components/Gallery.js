@@ -46,8 +46,6 @@ const Gallery = (props) => {
       visibility: hidden;
     `,
     galleryContainer__headline: css`
-      font-style: italic;
-      
       font-size: 1.5em;
       margin-bottom: 10px;
       @media ${breakPoints.tabletPortrait} {
@@ -110,8 +108,9 @@ const Gallery = (props) => {
         bottom: -100%;
         left: 50%;
         z-index: 1;
-        transform: translateY(50%);
+        transform: translate(-50%, 50%);
         transition: bottom .3s ease;
+        text-align: center;
       }
       
       &:hover {
@@ -145,16 +144,15 @@ const Gallery = (props) => {
   const getGalleries = () => {
     const gallerContainerOrientationClass = galleryName => `galleryContainer__textContainer--${props.descriptions[galleryName].orientation}`;
     return (
-        Object.keys(props.galleries).map((galleryName, index) => (
+        Object.keys(props.galleries).map(galleryName => (
                 <div className={style.galleryContainer}>
                   <div className={`${style.galleryContainer__textContainer} ${style[gallerContainerOrientationClass(galleryName)]}`}>
-                    <p className={style.galleryContainer__headline}>"{props.descriptions[galleryName].headline}"</p>
+                    <p className={style.galleryContainer__headline}>{props.descriptions[galleryName].headline}</p>
                     {props.descriptions[galleryName].subText ? (<p className={style.galleryContainer__subText}>{props.descriptions[galleryName].subText}</p>) : null}
                   </div>
                   <Parallax
                       strength={100}
                       contentClassName={style.galleryContainer__inner}
-                      style={{background: colours[`c${index + 3}`]}}
                       renderLayer={percentage => getImages(props.galleries[galleryName], percentage)}
                   >
                     <Background></Background>

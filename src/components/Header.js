@@ -168,6 +168,7 @@ class Header extends Component {
         <div ref="headerContainer" className={style.headerContainer}>
           <div className={style.headerContainer__inner}>
             <button className={style.logo} onClick={() => this.scrollToTop()}>FairyFish Fabrics</button>
+            <p>Silk, alpaca wool and tulle fabrics made by hand</p>
             <button className={style.mobileMenuOpener} onClick={() => this.openMobileMenu()}>{mobileMenuOpener()}</button>
             <ul className={style.mainMenu}>
               <li><button onClick={this.createMenuItemClickHandler('_portfolio')}>Portfolio</button></li>
