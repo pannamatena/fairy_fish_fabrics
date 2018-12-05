@@ -81,7 +81,13 @@ class Header extends Component {
         margin: 0 20px;
       }
     `,
-      logo: css`
+    logoContainer: css`
+      p {
+        font-size: 0.8em;
+        line-height: 1;
+      }
+    `,
+    logo: css`
       transition: all 0.2s ease;
       font-family: ${fonts.f2};
       color: ${colours.c2};
@@ -167,12 +173,14 @@ class Header extends Component {
     return (
         <div ref="headerContainer" className={style.headerContainer}>
           <div className={style.headerContainer__inner}>
-            <button className={style.logo} onClick={() => this.scrollToTop()}>FairyFish Fabrics</button>
-            <p>Silk, alpaca wool and tulle fabrics made by hand</p>
+            <div className={style.logoContainer}>
+              <button className={style.logo} onClick={() => this.scrollToTop()}>FairyFish Fabrics</button>
+              <p>Silk, alpaca wool and tulle fabrics made by hand</p>
+            </div>
             <button className={style.mobileMenuOpener} onClick={() => this.openMobileMenu()}>{mobileMenuOpener()}</button>
             <ul className={style.mainMenu}>
               <li><button onClick={this.createMenuItemClickHandler('_portfolio')}>Portfolio</button></li>
-              <li><button>About</button></li>
+              <li><button onClick={this.createMenuItemClickHandler('_about')}>About</button></li>
               <li><button onClick={() => this.scrollToBottom()}>Contact</button></li>
             </ul>
           </div>

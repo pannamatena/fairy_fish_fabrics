@@ -54,7 +54,7 @@ export const galleryImages = {
       imgHeight: 470,
       top: 90,
       left: -50,
-      scrollSpeed: 130,
+      scrollSpeed: 100,
     },
   ],
   shawl_3: [
@@ -104,7 +104,7 @@ export const galleryDescriptions = {
   shawl_3: {
     orientation: 'left',
     headline: 'The simplicity of pure silk makes this shawl outstanding.',
-    text: 'Weaving in a silk warp is magical, while it demands great care and lots of practice. Silk is slippery and stretchy, the thread must be held with care to make the density of the work even, the edges razor-sharp.',
+    text: 'While it demands great care and lots of practice, weaving in a silk warp is magical. Silk is slippery and stretchy, the thread must be held with care to make the density even, the edges razor-sharp.',
     subText: '',
   },
 };

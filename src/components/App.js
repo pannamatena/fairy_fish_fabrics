@@ -177,6 +177,23 @@ class App extends Component {
           }
         }
       `,
+      aboutContainer: css`
+        overflow: hidden;
+        max-width: 1000px;
+        margin: auto;
+        
+        padding-top: 10px;
+        @media ${breakPoints.tabletPortrait} {
+          padding-top: 15px;
+        }
+        @media ${breakPoints.desktopSmall} {
+          padding-top: 20px;
+        }
+      `,
+      aboutContainer__img: css`
+        max-width: 20%;
+        float: left;
+      `,
     };
 
     return (
@@ -211,6 +228,17 @@ class App extends Component {
                 descriptions={galleryDescriptions}
                 size={this.state.windowInnerHeight}
             />
+          </div>
+          <div
+              name="_about"
+              className={style.aboutContainer}
+          >
+            <img className={style.aboutContainer__img} src="/imgs/about.jpg" alt="About FairyFish Fabrics" />
+            <p>I'm Tünde. And I can't imagine my life without weaving and threads.</p>
+            <p>In April 2016 I fell in love with weaving forever. At the time I didn't know how it would change my life.</p>
+            <p>Habár a fonás és a szövés ősi mesterségek, mára már gépekkel végezik, de a világ különböző szegleteiben még a most is szőnek, fonnak kézzel. Sokan hagyomány őrzésből végzik ezeket a mesterségeket, ám én úgy érzem, hogy igenis szabad újító lélekkel, a mai igényekhez közelebbi szőtteseket is készíteni.</p>
+            <p>A szövés egy csodálatos utazás számomra, minden darabban benne vagyok egy kicsit én magam is, a történetem, a világom, a látásmódom.<br />
+              Minden kendő és kelme, amit készítek más és más, egyedi és megismételhetetlen. Csak kiváló minőségű alapanyagokból, gyakran egyedi, kézzel festett vagy font fonalakból dolgozom. Kedvenc alapanyagom a selyem, amit igazán sokszor használok.</p>
           </div>
           <Footer
               displayFooter={this.displayFooter()}

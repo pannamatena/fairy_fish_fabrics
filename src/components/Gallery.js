@@ -36,11 +36,11 @@ const Gallery = (props) => {
     `,
     'galleryContainer__textContainer--left': css`
       left: 50%;
-      transform: translateX(-100%);
+      transform: translateX(-110%);
     `,
     'galleryContainer__textContainer--right': css`
       right: 50%;
-      transform: translateX(100%);
+      transform: translateX(110%);
     `,
     galleryContainer__inner: css`
       visibility: hidden;
@@ -60,7 +60,10 @@ const Gallery = (props) => {
         font-size: 2em;
       }
     `,
+    galleryContainer__text: css`
+    `,
     galleryContainer__subText: css`
+      margin-top: 5px;
     `,
     galleryContent: css`
       visibility: hidden;
@@ -148,6 +151,7 @@ const Gallery = (props) => {
                 <div className={style.galleryContainer}>
                   <div className={`${style.galleryContainer__textContainer} ${style[gallerContainerOrientationClass(galleryName)]}`}>
                     <p className={style.galleryContainer__headline}>{props.descriptions[galleryName].headline}</p>
+                    <p className={style.galleryContainer__text}>{props.descriptions[galleryName].text}</p>
                     {props.descriptions[galleryName].subText ? (<p className={style.galleryContainer__subText}>{props.descriptions[galleryName].subText}</p>) : null}
                   </div>
                   <Parallax
