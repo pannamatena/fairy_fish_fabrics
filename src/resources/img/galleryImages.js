@@ -1,6 +1,7 @@
 export const galleryImages = {
   shawl_1: [
     {
+      id: 1,
       name: 'Planned Asimmetry 3',
       url: '/imgs/shawl_black/shawl_black_close.jpg',
       imgWidth: 480,
@@ -10,6 +11,7 @@ export const galleryImages = {
       scrollSpeed: 220,
     },
     {
+      id: 2,
       name: 'Planned Asimmetry 2',
       url: '/imgs/shawl_black/shawl_black_front.jpg',
       imgWidth: 380,
@@ -19,6 +21,7 @@ export const galleryImages = {
       scrollSpeed: 100,
     },
     {
+      id: 3,
       name: 'Planned Asimmetry 1',
       url: '/imgs/shawl_black/shawl_black_model.jpg',
       imgWidth: 400,
@@ -30,6 +33,7 @@ export const galleryImages = {
   ],
   shawl_2: [
     {
+      id: 4,
       name: 'Pink with weaver pattern 3',
       url: '/imgs/shawl_pink/shawl_pink_side.jpg',
       imgWidth: 480,
@@ -39,6 +43,7 @@ export const galleryImages = {
       scrollSpeed: 100,
     },
     {
+      id: 5,
       name: 'Pink with weaver pattern 2',
       url: '/imgs/shawl_pink/shawl_pink_front.jpg',
       imgWidth: 360,
@@ -48,6 +53,7 @@ export const galleryImages = {
       scrollSpeed: 100,
     },
     {
+      id: 6,
       name: 'Pink with weaver pattern 1',
       url: '/imgs/shawl_pink/shawl_pink_close.jpg',
       imgWidth: 350,
@@ -59,6 +65,7 @@ export const galleryImages = {
   ],
   shawl_3: [
     {
+      id: 7,
       name: 'Pure Silk 3',
       url: '/imgs/shawl_white/shawl_white_1_close.jpg',
       imgWidth: 300,
@@ -68,6 +75,7 @@ export const galleryImages = {
       scrollSpeed: 100,
     },
     {
+      id: 8,
       name: 'Pure Silk 2',
       url: '/imgs/shawl_white/shawl_white_front_1.jpg',
       imgWidth: 480,
@@ -77,6 +85,7 @@ export const galleryImages = {
       scrollSpeed: 220,
     },
     {
+      id: 9,
       name: 'Pure Silk 1',
       url: '/imgs/shawl_white/shawl_white_model_2.jpg',
       imgWidth: 350,

@@ -2,7 +2,7 @@ import React from 'react';
 import { css } from 'emotion';
 import { colours } from '../resources/colours';
 import { breakPoints } from '../resources/breakPoints';
-import {facebook, instagram, pinterest} from "../resources/img/icons";
+import {facebook, instagram } from "../resources/img/icons";
 
 const Footer = (props) => {
   const footerHeight = () => {
@@ -119,14 +119,12 @@ const Footer = (props) => {
     `,
   };
 
-  console.log(footerHeight());
   return (
       <div className={`${style.footerContainer} ${style[footerHeight()]}`}>
         <div className={style.footerContainer__inner}>
           <ul className={style.socialLinks}>
             <li><a href="/">{facebook()}</a></li>
             <li><a href="/">{instagram()}</a></li>
-            <li><a href="/">{pinterest()}</a></li>
           </ul>
           <div className={style.contact}>
             <span><a href="mailto:email@email.com">email@email.com</a></span>
@@ -135,6 +133,7 @@ const Footer = (props) => {
           <div className={style.credentials}>Icons made by <a href="https://www.flaticon.com/authors/graphicsbay" title="GraphicsBay" target="_blank" rel="noopener noreferrer">GraphicsBay</a> from <a href="https://www.flaticon.com/" title="Flaticon" target="_blank" rel="noopener noreferrer">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank" rel="noopener noreferrer">CC 3.0 BY</a></div>
           <div className={style.credentials}>Photos by Andi Kondas Photo - Portrait for You</div>
           <div className={style.credentials}>Design & Development by <a href="http://pannadraws.com" title="PannaDraws" target="_blank" rel="noopener noreferrer">PannaDraws</a></div>
+          <div className={style.credentials}>Images and content &copy; Tünde Zsámba-Jakus, FairyFish Fabrics</div>
         </div>
       </div>
   );

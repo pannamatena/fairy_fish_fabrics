@@ -63,7 +63,13 @@ const Gallery = (props) => {
     galleryContainer__text: css`
     `,
     galleryContainer__subText: css`
-      margin-top: 5px;
+      margin-top: 10px;
+      @media ${breakPoints.tabletPortrait} {
+        margin-top: 15px;
+      }
+      @media ${breakPoints.desktopSmall} {
+        margin-top: 20px;
+      }
     `,
     galleryContent: css`
       visibility: hidden;
@@ -114,6 +120,8 @@ const Gallery = (props) => {
         transform: translate(-50%, 50%);
         transition: bottom .3s ease;
         text-align: center;
+        display: inline-block;
+        max-width: 150px;
       }
       
       &:hover {
@@ -131,6 +139,7 @@ const Gallery = (props) => {
     gallery.map(img => (
       <button
         className={style.galleryImgContainer}
+        key={img.id}
         style={{
           backgroundImage: `url(${img.url})`,
           width: img.imgWidth,
@@ -145,11 +154,11 @@ const Gallery = (props) => {
   );
 
   const getGalleries = () => {
-    const gallerContainerOrientationClass = galleryName => `galleryContainer__textContainer--${props.descriptions[galleryName].orientation}`;
+    const galleryContainerOrientationClass = galleryName => `galleryContainer__textContainer--${props.descriptions[galleryName].orientation}`;
     return (
         Object.keys(props.galleries).map(galleryName => (
-                <div className={style.galleryContainer}>
-                  <div className={`${style.galleryContainer__textContainer} ${style[gallerContainerOrientationClass(galleryName)]}`}>
+                <div className={style.galleryContainer} key={galleryName}>
+                  <div className={`${style.galleryContainer__textContainer} ${style[galleryContainerOrientationClass(galleryName)]}`}>
                     <p className={style.galleryContainer__headline}>{props.descriptions[galleryName].headline}</p>
                     <p className={style.galleryContainer__text}>{props.descriptions[galleryName].text}</p>
                     {props.descriptions[galleryName].subText ? (<p className={style.galleryContainer__subText}>{props.descriptions[galleryName].subText}</p>) : null}

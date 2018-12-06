@@ -182,17 +182,42 @@ class App extends Component {
         max-width: 1000px;
         margin: auto;
         
-        padding-top: 10px;
+        padding: 10px 10px 0;
         @media ${breakPoints.tabletPortrait} {
-          padding-top: 15px;
+          padding: 15px 15px 0;
         }
         @media ${breakPoints.desktopSmall} {
-          padding-top: 20px;
+          padding: 20px 20px 0;
+        }
+        
+        p {
+          margin-bottom: 10px;
+          @media ${breakPoints.tabletPortrait} {
+            margin-bottom: 15px;
+          }
+          @media ${breakPoints.desktopSmall} {
+            margin-bottom: 20px;
+          }
+        }
+      `,
+      aboutContainer__headline: css`
+        font-size: 1.5em;
+        @media ${breakPoints.desktopSmall} {
+          font-size: 2em;
         }
       `,
       aboutContainer__img: css`
         max-width: 20%;
         float: left;
+        border-radius: 3px;
+        
+        margin-right: 10px;
+        @media ${breakPoints.tabletPortrait} {
+          margin-right: 15px;
+        }
+        @media ${breakPoints.desktopSmall} {
+          margin-right: 20px;
+        }
       `,
     };
 
@@ -234,11 +259,11 @@ class App extends Component {
               className={style.aboutContainer}
           >
             <img className={style.aboutContainer__img} src="/imgs/about.jpg" alt="About FairyFish Fabrics" />
-            <p>I'm Tünde. And I can't imagine my life without weaving and threads.</p>
+            <p className={style.aboutContainer__headline}>I'm Tünde.<br />And I can't imagine my life without weaving and threads.</p>
             <p>In April 2016 I fell in love with weaving forever. At the time I didn't know how it would change my life.</p>
-            <p>Habár a fonás és a szövés ősi mesterségek, mára már gépekkel végezik, de a világ különböző szegleteiben még a most is szőnek, fonnak kézzel. Sokan hagyomány őrzésből végzik ezeket a mesterségeket, ám én úgy érzem, hogy igenis szabad újító lélekkel, a mai igényekhez közelebbi szőtteseket is készíteni.</p>
-            <p>A szövés egy csodálatos utazás számomra, minden darabban benne vagyok egy kicsit én magam is, a történetem, a világom, a látásmódom.<br />
-              Minden kendő és kelme, amit készítek más és más, egyedi és megismételhetetlen. Csak kiváló minőségű alapanyagokból, gyakran egyedi, kézzel festett vagy font fonalakból dolgozom. Kedvenc alapanyagom a selyem, amit igazán sokszor használok.</p>
+            <p>Although weaving is an ancient trade, today it's mostly done by machines. But in some places in the world people still use their hands to create textiles, mostly to keep traditions. However, I believe in making fabrics in a reforming spirit, bringing them closer to demands of today.</p>
+            <p>Weaving is a wonderful journey for me, every piece I create contains a bit from me, my story, my world, my views.<br />
+              Each shawl and fabric is different, one-of-a-kind and unrepeatable. I only work with the best quality materials, often with unique, hand-painted or hand-woven threads. My favourite is silk, which I use frequently.</p>
           </div>
           <Footer
               displayFooter={this.displayFooter()}
