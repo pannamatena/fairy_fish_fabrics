@@ -4,6 +4,7 @@ import { Parallax, Background } from 'react-parallax';
 import { colours } from '../resources/colours';
 import { fonts } from '../resources/fonts';
 import { breakPoints } from '../resources/breakPoints';
+import { gallery } from '../resources/img/icons';
 
 const Gallery = (props) => {
   const style = {
@@ -23,15 +24,18 @@ const Gallery = (props) => {
     galleryContainer__textContainer: css`
       z-index: 1;
       position: absolute;
+      top: 0;
       display: inline-block;
       max-width: 40%;
+      background: rgba(253, 253, 251, 0.6);
+      border-radius: 3px;
       
-      top: 10px;
+      padding: 10px;
       @media ${breakPoints.tabletPortrait} {
-        top: 15px;
+        padding: 15px;
       }
       @media ${breakPoints.desktopSmall} {
-        top: 20px;
+        padding: 20px;
       }
     `,
     'galleryContainer__textContainer--left': css`
@@ -110,9 +114,6 @@ const Gallery = (props) => {
       }
       
       span {
-        color: ${colours.c1};
-        font-family: ${fonts.f2};
-        font-size: 30px;
         position: absolute;
         bottom: -100%;
         left: 50%;
@@ -122,6 +123,11 @@ const Gallery = (props) => {
         text-align: center;
         display: inline-block;
         max-width: 150px;
+        
+        svg {
+          fill: ${colours.c1};
+          width: 30px;
+        }
       }
       
       &:hover {
@@ -135,20 +141,22 @@ const Gallery = (props) => {
     `,
   };
 
+  const icon = () => (gallery());
+
   const getImages = (gallery, percentage) => (
     gallery.map(img => (
       <button
         className={style.galleryImgContainer}
         key={img.id}
         style={{
-          backgroundImage: `url(${img.url})`,
+          backgroundImage: `url(${img.thumb})`,
           width: img.imgWidth,
           height: img.imgHeight,
           transform: `translateX(${img.left}%)`,
           top: `${img.top - (percentage * img.scrollSpeed)}%`,
         }}
       >
-        <span>{img.name}</span>
+        <span>{icon()}</span>
       </button>
     ))
   );

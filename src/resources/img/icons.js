@@ -235,3 +235,47 @@ export const mobileMenuOpener = () => (
       </g>
     </svg>
 );
+
+export const gallery = () => (
+    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+         width="612px" height="612px" viewBox="0 0 612 612">
+      <g>
+        <g id="Rectangle_30">
+          <g>
+            <path d="M514.637,208.636h27.817V69.545h-153v27.818h125.183V208.636z M0,0v612h612V0H0z M584.182,584.182H27.818V27.818h556.363
+				V584.182z M222.545,514.637H97.364V403.363H69.545v139.091h153V514.637z"/>
+          </g>
+        </g>
+      </g>
+      <g>
+      </g>
+      <g>
+      </g>
+      <g>
+      </g>
+      <g>
+      </g>
+      <g>
+      </g>
+      <g>
+      </g>
+      <g>
+      </g>
+      <g>
+      </g>
+      <g>
+      </g>
+      <g>
+      </g>
+      <g>
+      </g>
+      <g>
+      </g>
+      <g>
+      </g>
+      <g>
+      </g>
+      <g>
+      </g>
+    </svg>
+);

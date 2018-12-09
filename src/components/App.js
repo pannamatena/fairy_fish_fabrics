@@ -258,7 +258,7 @@ class App extends Component {
               name="_about"
               className={style.aboutContainer}
           >
-            <img className={style.aboutContainer__img} src="/imgs/about.jpg" alt="About FairyFish Fabrics" />
+            <img className={style.aboutContainer__img} src="/imgs/about.png" alt="About FairyFish Fabrics" />
             <p className={style.aboutContainer__headline}>I'm Tünde.<br />And I can't imagine my life without weaving and threads.</p>
             <p>In April 2016 I fell in love with weaving forever. At the time I didn't know how it would change my life.</p>
             <p>Although weaving is an ancient trade, today it's mostly done by machines. But in some places in the world people still use their hands to create textiles, mostly to keep traditions. However, I believe in making fabrics in a reforming spirit, bringing them closer to demands of today.</p>

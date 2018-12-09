@@ -92,16 +92,15 @@ const Footer = (props) => {
       display: ${props.isBottomReached ? 'block' : 'none'};
       text-align: center;
       
-      margin: 10px 0;
-      @media ${breakPoints.tabletPortrait} {
-        margin: 15px 0;
-      }
-      @media ${breakPoints.desktopSmall} {
-        margin: 20px 0;
-      }
-      
       span {
-        display: block;
+        display: inline-block;
+        margin: 0 10px;
+        @media ${breakPoints.tabletPortrait} {
+          margin: 0 15px;
+        }
+        @media ${breakPoints.desktopSmall} {
+          margin: 0 20px;
+        }
        }
     `,
     credentials: css`
@@ -127,7 +126,7 @@ const Footer = (props) => {
             <li><a href="/">{instagram()}</a></li>
           </ul>
           <div className={style.contact}>
-            <span><a href="mailto:email@email.com">email@email.com</a></span>
+            <span><a href="mailto:email@email.com">email@email.com</a></span>|
             <span>+36 12 1234 123</span>
           </div>
           <div className={style.credentials}>Icons made by <a href="https://www.flaticon.com/authors/graphicsbay" title="GraphicsBay" target="_blank" rel="noopener noreferrer">GraphicsBay</a> from <a href="https://www.flaticon.com/" title="Flaticon" target="_blank" rel="noopener noreferrer">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank" rel="noopener noreferrer">CC 3.0 BY</a></div>
