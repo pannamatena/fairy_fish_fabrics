@@ -3,7 +3,7 @@ export const galleryImages = {
     {
       id: 1,
       name: 'Planned Asimmetry 3',
-      url: '/imgs/shawl_black/shawl_black_close.jpg',
+      url: '/imgs/shawl_black/shawl_black_close_1200.png',
       thumb: '/imgs/thumbs/shawl_black_close_thumb.png',
       imgWidth: 550,
       imgHeight: 350,
@@ -14,7 +14,7 @@ export const galleryImages = {
     {
       id: 2,
       name: 'Planned Asimmetry 2',
-      url: '/imgs/shawl_black/shawl_black_front.jpg',
+      url: '/imgs/shawl_black/shawl_black_front_1200.png',
       thumb: '/imgs/thumbs/shawl_black_front_thumb.png',
       imgWidth: 380,
       imgHeight: 480,
@@ -25,7 +25,7 @@ export const galleryImages = {
     {
       id: 3,
       name: 'Planned Asimmetry 1',
-      url: '/imgs/shawl_black/shawl_black_model.jpg',
+      url: '/imgs/shawl_black/shawl_black_model_1200.png',
       thumb: '/imgs/thumbs/shawl_black_model_thumb.png',
       imgWidth: 400,
       imgHeight: 600,
@@ -38,7 +38,7 @@ export const galleryImages = {
     {
       id: 4,
       name: 'Pink with weaver pattern 3',
-      url: '/imgs/shawl_pink/shawl_pink_side.jpg',
+      url: '/imgs/shawl_pink/shawl_pink_side_1200.png',
       thumb: '/imgs/thumbs/shawl_pink_side_thumb.png',
       imgWidth: 550,
       imgHeight: 350,
@@ -49,7 +49,7 @@ export const galleryImages = {
     {
       id: 5,
       name: 'Pink with weaver pattern 2',
-      url: '/imgs/shawl_pink/shawl_pink_front.jpg',
+      url: '/imgs/shawl_pink/shawl_pink_front_1200.png',
       thumb: '/imgs/thumbs/shawl_pink_front_thumb.png',
       imgWidth: 400,
       imgHeight: 600,
@@ -60,7 +60,7 @@ export const galleryImages = {
     {
       id: 6,
       name: 'Pink with weaver pattern 1',
-      url: '/imgs/shawl_pink/shawl_pink_close.jpg',
+      url: '/imgs/shawl_pink/shawl_pink_close_1200.png',
       thumb: '/imgs/thumbs/shawl_pink_close_thumb.png',
       imgWidth: 380,
       imgHeight: 550,
@@ -73,7 +73,7 @@ export const galleryImages = {
     {
       id: 7,
       name: 'Pure Silk 3',
-      url: '/imgs/shawl_white/shawl_white_1_close.jpg',
+      url: '/imgs/shawl_white/shawl_white_1_close_1200.png',
       thumb: '/imgs/thumbs/shawl_white_1_close_thumb.png',
       imgWidth: 380,
       imgHeight: 550,
@@ -84,7 +84,7 @@ export const galleryImages = {
     {
       id: 8,
       name: 'Pure Silk 2',
-      url: '/imgs/shawl_white/shawl_white_front_1.jpg',
+      url: '/imgs/shawl_white/shawl_white_front_1_1200.png',
       thumb: '/imgs/thumbs/shawl_white_front_1_thumb.png',
       imgWidth: 550,
       imgHeight: 350,
@@ -95,7 +95,7 @@ export const galleryImages = {
     {
       id: 9,
       name: 'Pure Silk 1',
-      url: '/imgs/shawl_white/shawl_white_model_2.jpg',
+      url: '/imgs/shawl_white/shawl_white_model_2_1200.png',
       thumb: '/imgs/thumbs/shawl_white_model_2_thumb.png',
       imgWidth: 400,
       imgHeight: 600,

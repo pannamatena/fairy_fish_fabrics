@@ -5,7 +5,8 @@ import { colours } from '../resources/colours';
 import { fonts } from '../resources/fonts';
 import { breakPoints } from '../resources/breakPoints';
 import { galleryImages, galleryDescriptions } from '../resources/img/galleryImages';
-import Gallery from './Gallery';
+import ParallaxGallery from './ParallaxGallery';
+import StaticGallery from './StaticGallery';
 import Header from './Header';
 import Footer from './Footer';
 
@@ -17,17 +18,22 @@ class App extends Component {
       isScrolled: false,
       isBottomReached: false,
       windowInnerHeight: window.innerHeight,
+      windowInnerWidth: window.innerWidth,
     };
 
     this.trackScroll = this.trackScroll.bind(this);
     this.checkIfScreenIsScrolled = this.checkIfScreenIsScrolled.bind(this);
     this.setWindowInnerHeight = this.setWindowInnerHeight.bind(this);
+    this.setWindowInnerWidth = this.setWindowInnerWidth.bind(this);
     this.displayFooter = this.displayFooter.bind(this);
   }
 
   componentDidMount() {
     window.addEventListener('scroll', this.trackScroll);
-    window.addEventListener('resize', this.setWindowInnerHeight);
+    window.addEventListener('resize', () => {
+      this.setWindowInnerHeight();
+      this.setWindowInnerWidth();
+    });
   }
 
   componentWillUnmount() {
@@ -44,6 +50,12 @@ class App extends Component {
   setWindowInnerHeight() {
     this.setState({
       windowInnerHeight: window.innerHeight,
+    });
+  }
+
+  setWindowInnerWidth() {
+    this.setState({
+      windowInnerWidth: window.innerWidth,
     });
   }
 
@@ -71,6 +83,22 @@ class App extends Component {
     document.removeEventListener('scroll', this.trackScroll);
   };
 
+  getGalleryType() {
+    return this.state.windowInnerWidth < 800 ? (
+        <StaticGallery
+            galleries={galleryImages}
+            descriptions={galleryDescriptions}
+        />
+    ) : (
+        <ParallaxGallery
+            galleries={galleryImages}
+            descriptions={galleryDescriptions}
+            screenHeight={this.state.windowInnerHeight}
+            screenWidth={this.state.windowInnerWidth}
+        />
+    );
+  }
+
   render() {
     const innerContainer = css`
       margin: 0 10px;
@@ -81,20 +109,6 @@ class App extends Component {
         margin: 0 20px;
       }
     `;
-    /*const styleButton = {
-      primary: css`
-        color: ${colours.c9};
-        border: 1px solid ${colours.c9};
-        padding: 10px 15px;
-        font-size: 16px;
-        border-radius: 3px;
-        
-        :hover {
-          color: ${colours.c1};
-          background: ${colours.c9};
-        }
-      `
-    };*/
     const style = {
       app: css`
         flex: 1;
@@ -170,7 +184,7 @@ class App extends Component {
             font-size: 1.8em;
           }
           @media ${breakPoints.desktopSmall} {
-            font-size: 2.3em;
+            font-size: 2em;
           }
           @media ${breakPoints.desktopLarge} {
             font-size: 2.8em;
@@ -248,11 +262,7 @@ class App extends Component {
               name="_portfolio"
               className={innerContainer}
           >
-            <Gallery
-                galleries={galleryImages}
-                descriptions={galleryDescriptions}
-                size={this.state.windowInnerHeight}
-            />
+            {this.getGalleryType()}
           </div>
           <div
               name="_about"
