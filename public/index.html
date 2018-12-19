@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="loading.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="theme-color" content="#000000">
     <!--
@@ -22,10 +23,14 @@
     <title>React App</title>
   </head>
   <body>
-    <noscript>
-      You need to enable JavaScript to run this app.
-    </noscript>
-    <div id="root" class="pageRoot"></div>
+    <div id="root" class="pageRoot">
+      <div class="loadingContainer">
+        <img src="ajax-loader.gif" alt="Loading" />
+      </div>
+      <noscript>
+        <p class="enableJS">You need to enable JavaScript to run this app.</p>
+      </noscript>
+    </div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
