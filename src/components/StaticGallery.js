@@ -83,6 +83,7 @@ const StaticGallery = (props) => {
             style={{
               backgroundImage: `url(${img.url})`,
             }}
+            key={`img_${img.id}`}
         >
           <span>{icon()}</span>
         </div>

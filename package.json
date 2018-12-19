@@ -5,6 +5,7 @@
   "dependencies": {
     "emotion": "^9.2.12",
     "react": "^16.6.3",
+    "react-click-outside": "github:tj/react-click-outside",
     "react-dom": "^16.6.3",
     "react-parallax": "^2.0.1",
     "react-scripts": "2.1.1",

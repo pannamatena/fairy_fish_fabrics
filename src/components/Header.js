@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { css } from 'emotion';
 import { animateScroll, scroller } from 'react-scroll';
+import ClickOutside from 'react-click-outside';
 import { colours } from '../resources/colours';
 import {fonts} from "../resources/fonts";
 import { breakPoints } from '../resources/breakPoints';
@@ -15,6 +16,8 @@ class Header extends Component {
     };
 
     this.createMenuItemClickHandler = this.createMenuItemClickHandler.bind(this);
+    this.toggleMenuOpen = this.toggleMenuOpen.bind(this);
+    this.closeMenu = this.closeMenu.bind(this);
   }
 
   createMenuItemClickHandler(elementName) {
@@ -25,6 +28,7 @@ class Header extends Component {
         smooth: true,
         offset
       });
+      this.closeMenu();
     }
   }
 
@@ -36,10 +40,16 @@ class Header extends Component {
     animateScroll.scrollToBottom({ duration: 500 });
   }
 
-  openMobileMenu() {
+  toggleMenuOpen() {
     this.setState({
       isMenuOpen: !this.state.isMenuOpen,
     })
+  }
+
+  closeMenu() {
+    this.setState({
+      isMenuOpen: false
+    });
   }
 
   render() {
@@ -115,6 +125,11 @@ class Header extends Component {
           }
         }
       `,
+      mainMenuContainer: css`
+        @media ${breakPoints.tabletPortrait} {
+          flex: 1;
+        }
+      `,
       mainMenu: css`
       transition: all 0.2s ease;
       overflow: hidden;
@@ -177,12 +192,14 @@ class Header extends Component {
               <button className={style.logo} onClick={() => this.scrollToTop()}>FairyFish Fabrics</button>
               <p>Silk, alpaca wool and tulle fabrics made by hand</p>
             </div>
-            <button className={style.mobileMenuOpener} onClick={() => this.openMobileMenu()}>{mobileMenuOpener()}</button>
-            <ul className={style.mainMenu}>
-              <li><button onClick={this.createMenuItemClickHandler('_portfolio')}>Portfolio</button></li>
-              <li><button onClick={this.createMenuItemClickHandler('_about')}>About</button></li>
-              <li><button onClick={() => this.scrollToBottom()}>Contact</button></li>
-            </ul>
+            <ClickOutside className={style.mainMenuContainer} onClickOutside={() => this.closeMenu()}>
+              <button className={style.mobileMenuOpener} onClick={() => this.toggleMenuOpen()}>{mobileMenuOpener()}</button>
+              <ul className={style.mainMenu}>
+                <li><button onClick={this.createMenuItemClickHandler('_portfolio')}>Portfolio</button></li>
+                <li><button onClick={this.createMenuItemClickHandler('_about')}>About</button></li>
+                <li><button onClick={() => this.scrollToBottom()}>Contact</button></li>
+              </ul>
+            </ClickOutside>
           </div>
         </div>
     );
