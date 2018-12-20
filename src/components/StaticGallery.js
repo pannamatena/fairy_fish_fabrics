@@ -86,7 +86,7 @@ const StaticGallery = (props) => {
                         backgroundImage: `url(${img.url})`,
                       }}
                       key={`img_${img.id}`}
-                      onClick={() => props.createShowGalleryHandler(galleryName, gallery.indexOf(img))}
+                      onClick={() => props.createImageViewerHandler(galleryName, gallery.indexOf(img))}
                   >
                     <span>{galleryIcon()}</span>
                   </div>

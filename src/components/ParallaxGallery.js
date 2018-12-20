@@ -4,6 +4,7 @@ import { Parallax, Background } from 'react-parallax';
 import { colours } from '../resources/colours';
 import { breakPoints } from '../resources/breakPoints';
 import { galleryIcon } from '../resources/img/icons';
+import ImageViewer from './ImageViewer';
 
 const ParallaxGallery = (props) => {
   const style = {
@@ -164,26 +165,30 @@ const ParallaxGallery = (props) => {
     return newImgProportions;
   };
 
-  const getImages = (gallery, percentage) => (
-      gallery.map(img => {
-        const optimizedImageProportions = getImgProportions(img.imgWidth, img.imgHeight, img.top);
-        return (
-            <button
-                className={style.galleryImgContainer}
-                key={img.id}
-                style={{
-                  backgroundImage: `url(${img.thumb})`,
-                  width: optimizedImageProportions.width,
-                  height: optimizedImageProportions.height,
-                  transform: `translateX(${img.left}%)`,
-                  top: `${optimizedImageProportions.top - (percentage * img.scrollSpeed)}%`,
-                }}
-            >
-              <span>{galleryIcon()}</span>
-            </button>
-        )
-      })
-  );
+  const getImages = (galleryName, percentage) => {
+    const gallery = props.galleries[galleryName];
+    return (
+        gallery.map(img => {
+          const optimizedImageProportions = getImgProportions(img.imgWidth, img.imgHeight, img.top);
+          return (
+              <button
+                  className={style.galleryImgContainer}
+                  key={img.id}
+                  style={{
+                    backgroundImage: `url(${img.thumb})`,
+                    width: optimizedImageProportions.width,
+                    height: optimizedImageProportions.height,
+                    transform: `translateX(${img.left}%)`,
+                    top: `${optimizedImageProportions.top - (percentage * img.scrollSpeed)}%`,
+                  }}
+                  onClick={() => props.createImageViewerHandler(galleryName, gallery.indexOf(img))}
+              >
+                <span>{galleryIcon()}</span>
+              </button>
+          )
+        })
+    );
+  };
 
   const getGalleries = () => {
     const galleryContainerOrientationClass = galleryName => `galleryContainer__textContainer--${props.descriptions[galleryName].orientation}`;
@@ -198,7 +203,7 @@ const ParallaxGallery = (props) => {
                   <Parallax
                       strength={100}
                       contentClassName={style.galleryContainer__inner}
-                      renderLayer={percentage => getImages(props.galleries[galleryName], percentage)}
+                      renderLayer={percentage => getImages(galleryName, percentage)}
                   >
                     <Background></Background>
                     <div className={style.galleryContent}></div>
@@ -206,12 +211,22 @@ const ParallaxGallery = (props) => {
                 </div>
             )
         )
-    )
+    );
   };
 
   return (
     <div className={style.gallery}>
       {getGalleries()}
+      <ImageViewer
+          currentImage={props.currentImage}
+          currentGallery={props.currentGallery}
+          galleries={props.galleries}
+          isImageViewerOpen={props.isImageViewerOpen}
+          goToNextImage={() => props.goToNextImage(props.currentGallery)}
+          goToPrevImage={props.goToPrevImage}
+          goToSelectedImage={props.goToSelectedImage}
+          closeImageViewer={props.closeImageViewer}
+      />
     </div>
   );
 };

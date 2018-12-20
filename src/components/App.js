@@ -29,7 +29,7 @@ class App extends Component {
     this.setWindowInnerHeight = this.setWindowInnerHeight.bind(this);
     this.setWindowInnerWidth = this.setWindowInnerWidth.bind(this);
     this.displayFooter = this.displayFooter.bind(this);
-    this.createShowGalleryHandler = this.createShowGalleryHandler.bind(this);
+    this.createImageViewerHandler = this.createImageViewerHandler.bind(this);
     this.closeImageViewer = this.closeImageViewer.bind(this);
     this.goToNextImage = this.goToNextImage.bind(this);
     this.goToPrevImage = this.goToPrevImage.bind(this);
@@ -67,7 +67,7 @@ class App extends Component {
     });
   }
 
-  createShowGalleryHandler(galleryId, imgIndex) {
+  createImageViewerHandler(galleryId, imgIndex) {
     this.setState({
       currentImage: imgIndex,
       isImageViewerOpen: true,
@@ -152,6 +152,14 @@ class App extends Component {
             descriptions={galleryDescriptions}
             screenHeight={this.state.windowInnerHeight}
             screenWidth={this.state.windowInnerWidth}
+            createImageViewerHandler={this.createImageViewerHandler}
+            closeImageViewer={this.closeImageViewer}
+            goToPrevImage={this.goToPrevImage}
+            goToNextImage={this.goToNextImage}
+            goToSelectedImage={this.goToSelectedImage}
+            currentImage={this.state.currentImage}
+            currentGallery={this.state.currentGallery}
+            isImageViewerOpen={this.state.isImageViewerOpen}
         />
     );
   }
