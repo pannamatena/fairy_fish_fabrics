@@ -137,7 +137,7 @@ class App extends Component {
         <StaticGallery
             galleries={galleryImages}
             descriptions={galleryDescriptions}
-            createShowGalleryHandler={this.createShowGalleryHandler}
+            createImageViewerHandler={this.createImageViewerHandler}
             closeImageViewer={this.closeImageViewer}
             goToPrevImage={this.goToPrevImage}
             goToNextImage={this.goToNextImage}
