@@ -19,6 +19,9 @@ class App extends Component {
       isBottomReached: false,
       windowInnerHeight: window.innerHeight,
       windowInnerWidth: window.innerWidth,
+      isImageViewerOpen: false,
+      currentImage: 0,
+      currentGallery: null,
     };
 
     this.trackScroll = this.trackScroll.bind(this);
@@ -26,6 +29,11 @@ class App extends Component {
     this.setWindowInnerHeight = this.setWindowInnerHeight.bind(this);
     this.setWindowInnerWidth = this.setWindowInnerWidth.bind(this);
     this.displayFooter = this.displayFooter.bind(this);
+    this.createShowGalleryHandler = this.createShowGalleryHandler.bind(this);
+    this.closeImageViewer = this.closeImageViewer.bind(this);
+    this.goToNextImage = this.goToNextImage.bind(this);
+    this.goToPrevImage = this.goToPrevImage.bind(this);
+    this.goToSelectedImage = this.goToSelectedImage.bind(this);
   }
 
   componentDidMount() {
@@ -59,6 +67,47 @@ class App extends Component {
     });
   }
 
+  createShowGalleryHandler(galleryId, imgIndex) {
+    this.setState({
+      currentImage: imgIndex,
+      isImageViewerOpen: true,
+      currentGallery: galleryId,
+    });
+  }
+
+  closeImageViewer() {
+    this.setState({
+      isImageViewerOpen: false,
+      currentImage: 0,
+      currentGallery: null,
+    });
+  }
+
+  goToPrevImage() {
+    if (this.state.currentImage === 0) {
+      return;
+    }
+    this.setState({
+      currentImage: this.state.currentImage - 1,
+    });
+  }
+
+  goToNextImage(currentGallery) {
+    const gallery = galleryImages[currentGallery];
+    if (this.state.currentImage === gallery.length - 1) {
+      return;
+    }
+    this.setState({
+      currentImage: this.state.currentImage + 1,
+    });
+  }
+
+  goToSelectedImage(index) {
+    this.setState({
+      currentImage: index,
+    });
+  }
+
   displayFooter() {
     if ((window.scrollY > 20) && !this.state.isBottomReached) {
       return 'SHOW';
@@ -88,6 +137,14 @@ class App extends Component {
         <StaticGallery
             galleries={galleryImages}
             descriptions={galleryDescriptions}
+            createShowGalleryHandler={this.createShowGalleryHandler}
+            closeImageViewer={this.closeImageViewer}
+            goToPrevImage={this.goToPrevImage}
+            goToNextImage={this.goToNextImage}
+            goToSelectedImage={this.goToSelectedImage}
+            currentImage={this.state.currentImage}
+            currentGallery={this.state.currentGallery}
+            isImageViewerOpen={this.state.isImageViewerOpen}
         />
     ) : (
         <ParallaxGallery

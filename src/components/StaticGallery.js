@@ -2,7 +2,8 @@ import React from 'react';
 import { css } from 'emotion';
 import { colours } from '../resources/colours';
 import { breakPoints } from '../resources/breakPoints';
-import { gallery } from '../resources/img/icons';
+import { galleryIcon } from '../resources/img/icons';
+import ImageViewer from './ImageViewer';
 
 const StaticGallery = (props) => {
   const style = {
@@ -74,25 +75,30 @@ const StaticGallery = (props) => {
     `,
   };
 
-  const icon = () => (gallery());
-
-  const getImages = gallery => (
-    gallery.map(img => (
-        <div
-            className={style.galleryContainer__img}
-            style={{
-              backgroundImage: `url(${img.url})`,
-            }}
-            key={`img_${img.id}`}
-        >
-          <span>{icon()}</span>
-        </div>
-    ))
-  );
-
-  const getGalleries = () => {
+  const getImages = galleryName => {
+    const gallery = props.galleries[galleryName];
     return (
-        Object.keys(props.galleries).map(galleryName => (
+        gallery.map(img => {
+              return (
+                  <div
+                      className={style.galleryContainer__img}
+                      style={{
+                        backgroundImage: `url(${img.url})`,
+                      }}
+                      key={`img_${img.id}`}
+                      onClick={() => props.createShowGalleryHandler(galleryName, gallery.indexOf(img))}
+                  >
+                    <span>{galleryIcon()}</span>
+                  </div>
+              );
+            }
+        )
+    );
+  };
+
+  const getGalleries = () => (
+      Object.keys(props.galleries).map(galleryName => {
+            return (
                 <div className={style.galleryContainer} key={galleryName}>
                   <div className={style.galleryContainer__textContainer}>
                     <p className={style.galleryContainer__headline}>{props.descriptions[galleryName].headline}</p>
@@ -100,17 +106,27 @@ const StaticGallery = (props) => {
                     {props.descriptions[galleryName].subText ? (
                         <p className={style.galleryContainer__subText}>{props.descriptions[galleryName].subText}</p>) : null}
                   </div>
-                  {getImages(props.galleries[galleryName])}
+                  {getImages(galleryName)}
                 </div>
-            )
-        )
-    )
-  };
+            );
+          }
+      )
+  );
 
   return (
-    <div className={style.gallery}>
-      {getGalleries()}
-    </div>
+      <div className={style.gallery}>
+        {getGalleries()}
+        <ImageViewer
+            currentImage={props.currentImage}
+            currentGallery={props.currentGallery}
+            galleries={props.galleries}
+            isImageViewerOpen={props.isImageViewerOpen}
+            goToNextImage={() => props.goToNextImage(props.currentGallery)}
+            goToPrevImage={props.goToPrevImage}
+            goToSelectedImage={props.goToSelectedImage}
+            closeImageViewer={props.closeImageViewer}
+        />
+      </div>
   );
 };
 

@@ -3,7 +3,7 @@ import { css } from 'emotion';
 import { Parallax, Background } from 'react-parallax';
 import { colours } from '../resources/colours';
 import { breakPoints } from '../resources/breakPoints';
-import { gallery } from '../resources/img/icons';
+import { galleryIcon } from '../resources/img/icons';
 
 const ParallaxGallery = (props) => {
   const style = {
@@ -140,8 +140,6 @@ const ParallaxGallery = (props) => {
     `,
   };
 
-  const icon = () => (gallery());
-
   const getImgProportions = (width, height, top) => {
     const newImgProportions = {
       width,
@@ -181,7 +179,7 @@ const ParallaxGallery = (props) => {
                   top: `${optimizedImageProportions.top - (percentage * img.scrollSpeed)}%`,
                 }}
             >
-              <span>{icon()}</span>
+              <span>{galleryIcon()}</span>
             </button>
         )
       })
