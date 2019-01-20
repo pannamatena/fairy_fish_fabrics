@@ -3,6 +3,7 @@ import { css } from 'emotion';
 import { Parallax } from 'react-parallax';
 import { colours } from '../resources/colours';
 import { fonts } from '../resources/fonts';
+import { logo } from '../resources/img/icons';
 import { breakPoints } from '../resources/breakPoints';
 import { galleryImages, galleryDescriptions } from '../resources/img/galleryImages';
 import ParallaxGallery from './ParallaxGallery';
@@ -232,14 +233,6 @@ class App extends Component {
         align-items: center;
         justify-content: center;
         
-        a {
-          color: ${colours.c1};
-          border: 2px solid ${colours.c1};
-          display: block;
-          width: 100px;
-          height: 100px;
-        }
-        
         h2 {
           color: ${colours.c1};
           text-align: center;
@@ -254,6 +247,18 @@ class App extends Component {
           @media ${breakPoints.desktopLarge} {
             font-size: 2.8em;
           }
+        }
+      `,
+      promotionContainer__logo: css`
+        display: block;
+        width: 150px;
+        
+        @media ${breakPoints.desktopSmall} {
+          width: 200px;
+        }
+        
+        svg {
+          fill: ${colours.c1};
         }
       `,
       aboutContainer: css`
@@ -316,7 +321,7 @@ class App extends Component {
                     <div
                         className={style.promotionContainer__text}
                     >
-                      <a href="/">[logo img]</a>
+                      <a className={style.promotionContainer__logo} href="/">{logo()}</a>
                       <h2>Handwoven shawls and scarves</h2>
                     </div>
                 )}

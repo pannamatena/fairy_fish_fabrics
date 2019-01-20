@@ -122,8 +122,8 @@ const Footer = (props) => {
       <div className={`${style.footerContainer} ${style[footerHeight()]}`}>
         <div className={style.footerContainer__inner}>
           <ul className={style.socialLinks}>
-            <li><a href="/">{facebook()}</a></li>
-            <li><a href="/">{instagram()}</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/tunde.jakus.3">{facebook()}</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/fairyfishfabrics/">{instagram()}</a></li>
           </ul>
           <div className={style.contact}>
             <span><a href="mailto:email@email.com">email@email.com</a></span>|

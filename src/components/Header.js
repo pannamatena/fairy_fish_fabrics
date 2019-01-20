@@ -3,9 +3,9 @@ import { css } from 'emotion';
 import { animateScroll, scroller } from 'react-scroll';
 import ClickOutside from 'react-click-outside';
 import { colours } from '../resources/colours';
-import {fonts} from "../resources/fonts";
+import { fonts } from "../resources/fonts";
 import { breakPoints } from '../resources/breakPoints';
-import { mobileMenuOpener } from '../resources/img/icons';
+import { mobileMenuOpener, logo } from '../resources/img/icons';
 
 class Header extends Component {
   constructor(props) {
@@ -107,6 +107,24 @@ class Header extends Component {
       @media ${breakPoints.desktopLarge} {
         font-size: 1.8em;
       }
+      
+      svg {
+        transition: all 0.2s ease;
+        fill: ${colours.c2};
+      }
+      
+      :hover {
+        color: ${colours.c3};
+        
+        svg {
+          fill: ${colours.c3};
+        }
+      }
+    `,
+    logoImg: css`
+      display: inline-block;
+      margin-right: 5px;
+      width: 30px;
     `,
       mobileMenuOpener: css`
         @media ${breakPoints.tabletPortrait} {
@@ -189,7 +207,9 @@ class Header extends Component {
         <div ref="headerContainer" className={style.headerContainer}>
           <div className={style.headerContainer__inner}>
             <div className={style.logoContainer}>
-              <button className={style.logo} onClick={() => this.scrollToTop()}>FairyFish Fabrics</button>
+              <button className={style.logo} onClick={() => this.scrollToTop()}>
+                <div className={style.logoImg}>{logo()}</div>FairyFish Fabrics
+              </button>
               <p>Silk, alpaca wool and tulle fabrics made by hand</p>
             </div>
             <ClickOutside className={style.mainMenuContainer} onClickOutside={() => this.closeMenu()}>
